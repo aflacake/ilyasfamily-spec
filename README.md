@@ -5,21 +5,24 @@ Versi: 0.1-draft
 IlyasFamily adalah format pertukaran dan penyimpanan data universal berbasis tiga tipe data utama, tambahan tipe data struktural baru, dan format lebih matematis.
 
 ## Tipe Data
-- Atom
+- Atom\
   Contoh tipe atom
   - Angka -> `42` dan `3.14`.
   - String -> `"halo dunia"`.
   - Boolean -> `true` dan `false`.
   - Null/none -> `null`.
-  - `date`.
-  - `binary`.
-  - `uuid`.
-- List
+
+  ### Atom Tambahan
+  - `date` -> `@date("YYYY-MM-DD")`.
+  - `datetime` -> `@datetime("YYYY-MM-DDTHH:MM:SSZ")`.
+  - `binary` -> `@binary("<Base64 encoded data>")`.
+  - `uuid` -> `@uuid("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")`.
+- List\
   Koleksi berurutan. Ditulis dengan tanda `[...]`.
   - Bisa kosong -> `[]`.
   - Bisa berisi atom, record, atau list lain -> `[1, 2, [3, 4], {"a": 5}]`\
   `[1, 2, 3]`, `["a", "b", {"x": 1}]`
-- Record
+- Record\
   Koleksi pasangan kunci -> nilai. Ditulis dengan `{...}`.
   - Kuncinya biasanya string (bisa diperluas ke tipe lain).
   - Nilai bisa atom, list, atau record lain.\
