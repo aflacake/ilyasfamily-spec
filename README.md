@@ -1,2 +1,45 @@
-# ilyasfamily-spec
-Format pertukaran dan penyimpanan data mirip JSON namun diperluas
+# Spesifikasi IlyasFamily
+Versi: 0.1-draft
+
+## Tujuan
+IlyasFamily adalah format pertukaran dan penyimpanan data universal berbasis tiga tipe data utama, tambahan tipe data struktural baru, dan format lebih matematis.
+
+## Tipe Data
+- Atom
+  Contoh tipe atom
+  - Angka -> `42` dan `3.14`.
+  - String -> `"halo dunia"`.
+  - Boolean -> `true` dan `false`.
+  - Null/none -> `null`.
+  - `date`.
+  - `binary`.
+  - `uuid`.
+- List
+  Koleksi berurutan. Ditulis dengan tanda `[...]`.
+  - Bisa kosong -> `[]`.
+  - Bisa berisi atom, record, atau list lain -> `[1, 2, [3, 4], {"a": 5}]`\
+  `[1, 2, 3]`, `["a", "b", {"x": 1}]`
+- Record
+  Koleksi pasangan kunci -> nilai. Ditulis dengan `{...}`.
+  - Kuncinya biasanya string (bisa diperluas ke tipe lain).
+  - Nilai bisa atom, list, atau record lain.\
+  `{ "nama": "Nazwa", "umur": 21 }`.
+
+## Sintaks
+- String menggunakan tanda kutip ganda `"..."`.
+- Angka ditulis dalam format desimal.
+- Boolean: `true` dan `false`.
+- Null: `null`.
+
+## Contoh Dokumen
+```ifamily
+{
+  "nama": "Budi",
+  "umur": 21,
+  "hobi": ["coding", "menulis"],
+  "alamat": {"kota": "Bandung", "kode": 40123}
+}
+```
+
+## Ekstensi File
+`.ifamily`
