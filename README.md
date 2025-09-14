@@ -28,6 +28,51 @@ IlyasFamily adalah format pertukaran dan penyimpanan data universal berbasis tig
   - Nilai bisa atom, list, atau record lain.\
   `{ "nama": "Nazwa", "umur": 21 }`.
 
+## Tipe Data Struktural Baru
+- Set -> `@set([...])`.\
+  Koleksi unik tanpa urutan.
+- Map -> `@map([[key, value], ...])`.\
+  Mirip record tapi kunci bisa tipe apapun (bukan string).
+- Tuple -> `@tuple([...])`.
+  - Mirip list tapi panjangnya tetap (fixed length) atau bermakna "data berpasangan".
+  - Bisa dipakai untuk koordinat, pasangan nilai, dll.
+- Graph -> `@graph({ "nodes": [...], "edges": [...] })`.\
+  Struktur lebih kompleks: ada `nodes` dan `edges`.
+
+  - Directed vs Undirected\
+    Tambahkan flag directed: `true` atau `false`.
+    ```ifamily
+    @graph({
+      "directed": true,
+      "nodes": ["A", "B", "C"],
+      "edges": [["A", "B"], ["B", "C"]]
+    })
+    ```
+  - Weighted Edges\
+    Edge bisa berupa record dengan `source`, `target`, dan `weight`.
+    ```ifamily
+    @graph({
+      "nodes": ["A", "B", "C"],
+      "edges": [
+        {"from": "A", "to": "B", "weight": 5},
+        {"from": "B", "to": "C", "weight": 3}
+      ]
+    })
+    ```
+  - Node Properties\
+    Node bisa berupa record juga, bukan sekadar string.
+    ```ifamily
+    @graph({
+      "nodes": [
+        {"id": "A", "label": "Start"},
+        {"id": "B", "label": "End"}
+      ],
+      "edges": [
+        {"from": "A", "to": "B", "type": "transition"}
+      ]
+    })
+    ```
+
 ## Sintaks
 - String menggunakan tanda kutip ganda `"..."`.
 - Angka ditulis dalam format desimal.
@@ -43,12 +88,6 @@ IlyasFamily adalah format pertukaran dan penyimpanan data universal berbasis tig
   "alamat": {"kota": "Bandung", "kode": 40123}
 }
 ```
-
-## Tipe Data Struktural Baru
-- Set -> `@set([...])`.
-- Map -> `@map([[key, value], ...])`.
-- Tuple -> `@tuple([...])`.
-- Graph -> `@graph({ "nodes": [...], "edges": [...] })`.
 
 ## Ekstensi File
 `.ifamily`
