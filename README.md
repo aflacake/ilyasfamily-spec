@@ -1,5 +1,5 @@
 # Spesifikasi IlyasFamily
-Versi: 0.1-draft
+Versi: 0.2
 
 ## Tujuan
 IlyasFamily adalah format pertukaran dan penyimpanan data universal berbasis tiga tipe data utama, tambahan tipe data struktural baru, dan format lebih matematis.
@@ -43,6 +43,12 @@ IlyasFamily adalah format pertukaran dan penyimpanan data universal berbasis tig
   "alamat": {"kota": "Bandung", "kode": 40123}
 }
 ```
+
+## Tipe Data Struktural Baru
+- Set -> `@set([...])`.
+- Map -> `@map([[key, value], ...])`.
+- Tuple -> `@tuple([...])`.
+- Graph -> `@graph({ "nodes": [...], "edges": [...] })`.
 
 ## Ekstensi File
 `.ifamily`
