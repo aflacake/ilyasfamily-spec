@@ -1,8 +1,10 @@
 # Spesifikasi IlyasFamily
-Versi: 0.2
+Versi: 0.3
 
 ## Tujuan
 IlyasFamily adalah format pertukaran dan penyimpanan data universal berbasis tiga tipe data utama, tambahan tipe data struktural baru, dan format lebih matematis.
+
+Data IlyasFamily dapat diserialisasi dalam tiga notasi: JSON-like, S-expression, dan Tree. Ketiganya ekuivalen secara semantik.
 
 ## Tipe Data
 - Atom\
@@ -26,7 +28,7 @@ IlyasFamily adalah format pertukaran dan penyimpanan data universal berbasis tig
   Koleksi pasangan kunci -> nilai. Ditulis dengan `{...}`.
   - Kuncinya biasanya string (bisa diperluas ke tipe lain).
   - Nilai bisa atom, list, atau record lain.\
-  `{ "nama": "Nazwa", "umur": 21 }`.
+  `{ "nama": "Budi", "umur": 21 }`.
 
 ## Tipe Data Struktural Baru
 - Set -> `@set([...])`.\
@@ -72,6 +74,38 @@ IlyasFamily adalah format pertukaran dan penyimpanan data universal berbasis tig
       ]
     })
     ```
+
+## Format Lebih Matematis
+- S-Ekspression\
+  Asal dari lisp (1950-an) bentuk representasi universal yang sangat sederhana.\
+  List rekursif (semua list).\
+  `(add 1 2)`
+  
+  Dalam konteks IlyasFamily, S-Expresssion bisa dipakai untuk representasi ringkas:
+  ```ifamily
+  (graph
+    (nodes "A" "B" "C")
+    (edges ("A" "B") ("B" "C")))
+  ```
+- Tree/Node-Based Format\
+  Intinya semua data dianggap pohon (tree).
+  Pohon dengan label dan anak.\
+  ```
+  <person>
+  <name>Budi</name>
+  </person>
+  ```
+  
+  Representasi eksplisit IlyasFamily style:
+  ```ifamily
+  @node("Person", {
+    "Name": "Budi",
+    "Age": 21,
+    "Address": @node("Address", {
+      "city": "Bandung",
+      "code": 40123
+    })
+  })
 
 ## Sintaks
 - String menggunakan tanda kutip ganda `"..."`.
