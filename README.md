@@ -1,5 +1,5 @@
 # Spesifikasi IlyasFamily
-Versi: 0.3
+Versi: 1.0
 
 ## Tujuan
 IlyasFamily adalah format pertukaran dan penyimpanan data universal berbasis tiga tipe data utama, tambahan tipe data struktural baru, dan format lebih matematis.
